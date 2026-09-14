@@ -1,10 +1,5 @@
 # Write your MySQL query statement below
-WITH subq AS (
-    SELECT 
-        MIN(id) AS id,
-        email
-    FROM Person
-    GROUP BY email
-) 
-
-DELETE FROM Person WHERE id NOT IN (SELECT id FROM subq)
+ DELETE p2 
+ FROM Person p1
+ LEFT JOIN Person p2
+ ON p1.email = p2.email AND p1.id < p2.id
